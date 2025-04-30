@@ -7,7 +7,8 @@ class Program
     {
         Console.WriteLine("Welcome to the Item Manager!");
 
-        ItemManager manager = new ItemManager();
+        //ItemManager manager = new ItemManager();
+        IItemManager manager = new ItemManager();
 
         // Part One: Fix the NullReferenceException
         // This will throw a NullReferenceException
@@ -45,7 +46,7 @@ class Program
     }
 }
 
-public class ItemManager
+public class ItemManager : IItemManager
 {
     private List<string> items = new List<string>();
 
@@ -121,4 +122,12 @@ public class Fruit
     {
         return $"{Name} ({Color})";
     }
+}
+
+public interface IItemManager
+{
+    void AddItem(string item);
+    void RemoveItem(string item);
+    void PrintAllItems();
+    void ClearAllItems();
 }
